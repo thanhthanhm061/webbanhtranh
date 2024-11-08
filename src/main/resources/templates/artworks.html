@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Art Store</title>
+</head>
+<body>
+<h1>Artworks</h1>
+<ul>
+    <li th:each="artwork : ${artworks}">
+        <a th:href="@{/artworks/{id}(id=${artwork.id})}" th:text="${artwork.title}">Artwork Title</a>
+        <p th:text="${artwork.description}">Artwork Description</p>
+        <p th:text="${artwork.price}">Price</p>
+    </li>
+</ul>
+</body>
+</html>
