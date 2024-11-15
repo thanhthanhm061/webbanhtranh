@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.webbanhtranh.models.Artwork;
@@ -24,8 +23,10 @@ public class ArtworkController {
     public String listArtworks(Model model) {
         List<Artwork> artworks = artworkService.getAllArtworks();
         model.addAttribute("artworks", artworks);
-        return "artworks";  // View for artwork list
+        return "artworks";
     }
+
+
 
     @GetMapping("/{id}")
     public String viewArtwork(@PathVariable Long id, Model model) {

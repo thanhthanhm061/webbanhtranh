@@ -5,8 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thanh Toán</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .checkout-table th, .checkout-table td {
+            text-align: center;
+        }
+        .checkout-total {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .checkout-total span {
+            color: #28a745;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .checkout-button {
+            width: 100%;
+            font-size: 1.2rem;
+        }
+        .product-image {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
+
 <!-- Thanh điều hướng -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Cửa Hàng Tranh</a>
@@ -21,12 +53,13 @@
 
 <!-- Nội dung trang thanh toán -->
 <div class="container mt-5">
-    <h2>Thông Tin Thanh Toán</h2>
+    <h2 class="text-center mb-4">Thông Tin Thanh Toán</h2>
 
-    <h4>Chi tiết đơn hàng</h4>
-    <table class="table">
-        <thead>
+    <h4>Chi Tiết Đơn Hàng</h4>
+    <table class="table checkout-table">
+        <thead class="thead-light">
         <tr>
+            <th scope="col">Hình Ảnh</th>
             <th scope="col">Tên Sản Phẩm</th>
             <th scope="col">Giá</th>
             <th scope="col">Số Lượng</th>
@@ -35,6 +68,10 @@
         </thead>
         <tbody>
         <tr th:each="item : ${cartItems}">
+            <td>
+                <!-- Thêm ảnh sản phẩm -->
+                <img th:src="@{${item.artwork.imageUrl}}" class="product-image" alt="Product Image">
+            </td>
             <td th:text="${item.artwork.title}">Product Title</td>
             <td th:text="${item.artwork.price}">Price</td>
             <td th:text="${item.quantity}">Quantity</td>
@@ -44,18 +81,18 @@
     </table>
 
     <div class="mt-3">
-        <h4>Tổng Tiền: <span th:text="${totalAmount}">Total Amount</span></h4>
+        <h4 class="checkout-total">Tổng Tiền: <span th:text="${totalAmount}">Total Amount</span> USD</h4>
         <form action="/checkout/submit" method="post">
             <!-- Thêm các trường cần thiết cho thanh toán -->
             <div class="form-group">
                 <label for="name">Họ và Tên</label>
-                <input type="text" class="form-control" id="name" name="name" required>
+                <input type="text" class="form-control" id="name" name="name" required placeholder="Nhập họ và tên của bạn">
             </div>
             <div class="form-group">
                 <label for="address">Địa Chỉ</label>
-                <input type="text" class="form-control" id="address" name="address" required>
+                <input type="text" class="form-control" id="address" name="address" required placeholder="Nhập địa chỉ giao hàng">
             </div>
-            <button type="submit" class="btn btn-success">Thanh Toán</button>
+            <button type="submit" class="btn btn-success checkout-button">Thanh Toán</button>
         </form>
     </div>
 </div>

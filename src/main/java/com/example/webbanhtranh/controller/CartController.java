@@ -23,7 +23,7 @@ public class CartController {
         model.addAttribute("cartItems", cartService.getCartItems());
         // Tính tổng tiền giỏ hàng
         model.addAttribute("totalPrice", cartService.getTotalCartValue());
-        return "cart"; // Đây là trang cart.html trong thư mục templates
+        return "cart";
     }
 
     // Thêm sản phẩm vào giỏ
@@ -32,6 +32,7 @@ public class CartController {
         cartService.addCartItem(artworkId, quantity);
         return "redirect:/cart";  // Quay lại trang giỏ hàng
     }
+
 
     // Cập nhật số lượng sản phẩm trong giỏ hàng
     @PostMapping("/cart/update")

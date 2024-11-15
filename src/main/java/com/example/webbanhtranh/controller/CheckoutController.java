@@ -35,9 +35,6 @@ public class CheckoutController {
             @RequestParam("address") String address,
             Model model) {
 
-        // Xử lý thanh toán, bạn có thể thêm logic như gửi email, lưu thông tin đơn hàng vào cơ sở dữ liệu, v.v.
-        // Ví dụ, bạn chỉ cần thông báo đơn hàng đã được xử lý thành công.
-
         // Lấy thông tin giỏ hàng
         List<CartItem> cartItems = cartService.getCartItems();
         BigDecimal totalAmount = cartService.getTotalCartValue();

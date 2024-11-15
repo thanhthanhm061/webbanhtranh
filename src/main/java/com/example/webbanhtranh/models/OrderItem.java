@@ -36,7 +36,6 @@ public class OrderItem {
         this.totalPrice = price.multiply(BigDecimal.valueOf(quantity)); // Tính tổng tiền
     }
 
-    // Getters và Setters
     public Long getId() {
         return id;
     }
@@ -67,7 +66,6 @@ public class OrderItem {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-        this.totalPrice = this.price.multiply(BigDecimal.valueOf(quantity)); // Cập nhật tổng tiền khi số lượng thay đổi
     }
 
     public BigDecimal getPrice() {
@@ -76,7 +74,6 @@ public class OrderItem {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
-        this.totalPrice = price.multiply(BigDecimal.valueOf(quantity)); // Cập nhật tổng tiền khi giá thay đổi
     }
 
     public BigDecimal getTotalPrice() {
@@ -86,4 +83,6 @@ public class OrderItem {
     public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
     }
+// Getters và Setters
+
 }
