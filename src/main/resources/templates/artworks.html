@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,71 +11,162 @@
 <body>
 
 <!-- Thanh điều hướng -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+<nav class="navbar navbar-expand-lg shadow-sm" style="background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%); color: white;">
     <div class="container">
-        <a class="navbar-brand" href="#">Cửa Hàng Tranh</a>
+        <a class="navbar-brand text-white" href="#">Cửa Hàng Tranh</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon" style="color: white;"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="/">Trang Chủ</a></li>
-                <li class="nav-item"><a class="nav-link" href="/cart">Giỏ Hàng</a></li>
-                <li class="nav-item"><a class="nav-link" href="/checkout">Thanh Toán</a></li>
+            <ul class="navbar-nav ms-auto me-3">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#" style="font-weight: 500;">Trang Chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/cart" style="font-weight: 500;">Giỏ Hàng</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/checkout" style="font-weight: 500;">Thanh Toán</a>
+                </li>
             </ul>
+            <!-- Search Form -->
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search" style="border-radius: 20px;">
+                <button class="btn btn-outline-light" type="submit">Tìm</button>
+            </form>
         </div>
     </div>
 </nav>
 
-<header class="banner bg-light text-dark py-5">
-    <div class="container text-center">
-        <h1>Chào Mừng Đến Cửa Hàng Tranh</h1>
-        <p class="lead">Khám phá các tác phẩm nghệ thuật độc đáo</p>
+<style>
+    /* Additional styles for hover effects and padding */
+    .navbar-nav .nav-link {
+        padding: 8px 15px;
+        transition: color 0.3s, background-color 0.3s;
+    }
 
-        <!-- Carousel code placed here -->
-        <div id="carouselExampleIndicators" class="carousel slide">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="d-flex align-items-center justify-content-between" style="height: 600px;">
-                        <!-- Hình ảnh bên trái -->
-                        <img src="images/banner-image.png" class="d-block w-50" alt="..." style="height: 100%; object-fit: cover;">
+    .navbar-nav .nav-link:hover {
+        color: #2575fc;
+        background-color: #ffffff33;
+        border-radius: 5px;
+    }
 
-                    </div>
-                </div>
+    form .form-control {
+        min-width: 180px;
+    }
 
+    form .btn-outline-light {
+        color: white;
+        border-color: white;
+        transition: background-color 0.3s, color 0.3s;
+    }
 
-                <div class="carousel-item active">
-                    <div class="d-flex align-items-center justify-content-between" style="height: 600px;">
-                        <!-- Hình ảnh tranh -->
-                        <img src="images/banner-image1.png" class="d-block w-50" alt="..." style="height: 100%; object-fit: cover;">
+    form .btn-outline-light:hover {
+        background-color: white;
+        color: #2575fc;
+    }
+</style>
 
-                    </div>
-                </div>
-                <div class="carousel-item active">
-                    <div class="d-flex align-items-center justify-content-between" style="height: 600px;">
-                        <!-- Hình ảnh tranh -->
-                        <img src="images/banner-image2.png" class="d-block w-50" alt="..." style="height: 100%; object-fit: cover;">
+<header class="banner text-dark py-5" style="background-image: url('images/banner-image-bg.jpg'); background-size: cover; background-position: center;">
 
-                    </div>
-                </div>
-
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+    <!-- Carousel -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
+
+        <!-- Carousel Images with Overlay -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="overlay-image" style="background-image: url('images/banner-image.png');"></div>
+                <div class="carousel-caption d-flex flex-column justify-content-center h-100">
+                    <h1 class="display-6 text-black">Nghệ Thuật Độc Đáo</h1>
+                    <p class="text-black">Tận hưởng những khoảnh khắc nghệ thuật tinh tế.</p>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="overlay-image" style="background-image: url('images/banner-image1.png');"></div>
+                <div class="carousel-caption d-flex flex-column justify-content-center h-100">
+                    <h1 class="display-6 text-black">Sự Kết Hợp Hoàn Hảo</h1>
+                    <p class="text-black">Tranh phong phú, sắc màu cuốn hút.</p>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="overlay-image" style="background-image: url('images/banner-image2.png');"></div>
+                <div class="carousel-caption d-flex flex-column justify-content-center h-100">
+                    <h1 class="display-6 text-black">Vẻ Đẹp Vượt Thời Gian</h1>
+                    <p class="text-black">Khám phá nghệ thuật vượt thời gian.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
 </header>
+
+<style>
+    /* Fullscreen carousel and centered text */
+    .carousel-item {
+        height: 80vh; /* Reduced height for carousel to show background */
+        position: relative;
+    }
+
+    /* Image background overlay */
+    .overlay-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 600px;
+    width: 600px;
+    position: absolute;
+    top: 0;
+    left:0;
+    margin-right: 100px;
+    z-index: 1;
+    filter: brightness(0.7); /* Dark overlay for readability */
+}
+
+
+    /* Centered carousel text */
+    .carousel-caption {
+        z-index: 2; /* Higher than overlay */
+    }
+
+    .carousel-caption h2, .carousel-caption p {
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7); /* Subtle text shadow for readability */
+    }
+
+    /* Button custom styles */
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        filter: invert(1);
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 5%;
+    }
+
+    /* Background styling */
+    header.banner {
+        background-size: cover;
+        background-position: center;
+        padding-bottom: 50px; /* Extra padding at bottom */
+    }
+</style>
 
 <!-- Danh sách tranh -->
 <section class="container mt-5">
@@ -84,28 +175,26 @@
         <!-- Lặp qua các tác phẩm nghệ thuật -->
         <div th:each="artwork : ${artworks}" class="col-md-4 mb-4">
             <div class="card h-100 shadow-sm">
-                <!-- Hình ảnh tranh -->
-<!--                <img th:src="@{${artwork.imageUrl}}" class="card-img-top" alt="Tranh Nghệ Thuật">-->
-                <img src="/images/product-item1.png" class="card-img-top" alt="Tranh Nghệ Thuật" style="width: 100%; max-width: 200px;">
+                <!-- Sử dụng URL ảnh từ database -->
+                <img th:src="@{${artwork.imageUrl}}" class="card-img-top" alt="Tranh Nghệ Thuật">
+<!--                <p th:text="${artwork.imageUrl}">URL Ảnh</p>-->
+<!--                <img src="/images/product-item1.png" class="card-img-top" alt="Tranh Nghệ Thuật">-->
 
                 <div class="card-body">
-                    <!-- Tên tác phẩm -->
                     <h5 class="card-title" th:text="${artwork.title}">Artwork Title</h5>
-                    <!-- Mô tả tác phẩm -->
                     <p class="card-text" th:text="${artwork.description}">Artwork Description</p>
                 </div>
 
-                <div class="card-footer d-flex justify-content-between align-items-center">
-                    <!-- Giá tác phẩm -->
+                <div class="card-footer d-flex justify-content-between">
                     <span class="text-muted" th:text="${artwork.price}">Price</span>
-                    <!-- Liên kết tới trang chi tiết tác phẩm -->
                     <a th:href="@{/artworks/{id}(id=${artwork.id})}" class="btn btn-primary">Xem Chi Tiết</a>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
+
+
 
 
 
