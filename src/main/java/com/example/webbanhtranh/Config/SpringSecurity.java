@@ -27,11 +27,12 @@ public class SpringSecurity {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                .requestMatchers("/register/**", "/artworks", "/css/**", "/js/**", "/images/**").permitAll() // Các URL công khai
-                .requestMatchers("/users").hasRole("ADMIN")
-                .requestMatchers("/cart").authenticated()
-                .anyRequest().authenticated()
+                .csrf().disable()
+                    .authorizeRequests() // Dùng authorizeRequests() để cấu hình bảo mật
+                    .requestMatchers("/register/**").permitAll()
+                    .requestMatchers("/artworks").permitAll()
+                    .requestMatchers("/users").hasRole("ADMIN")
+                    .requestMatchers("/cart").authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
@@ -44,10 +45,12 @@ public class SpringSecurity {
                 .logoutSuccessUrl("/login?logout")
                 .permitAll()
                 .and()
-                .csrf().disable();
+                .authorizeRequests()
+                .requestMatchers("/css/**", "/js/**", "/images/**").permitAll();
 
         return http.build();
     }
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth

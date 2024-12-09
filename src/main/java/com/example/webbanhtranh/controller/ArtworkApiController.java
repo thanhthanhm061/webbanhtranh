@@ -49,7 +49,9 @@ public class ArtworkApiController {
             // Cập nhật thông tin
             existingArtwork.setTitle(updatedArtwork.getTitle());
             existingArtwork.setPrice(updatedArtwork.getPrice());
-            existingArtwork.setPrice(updatedArtwork.getPrice());
+            existingArtwork.setImageUrl(updatedArtwork.getImageUrl());
+            existingArtwork.setDescription(updatedArtwork.getDescription());
+
             // Lưu lại
             Artwork savedArtwork = artworkService.saveArtwork(existingArtwork);
             return ResponseEntity.ok(savedArtwork);

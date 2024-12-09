@@ -17,6 +17,7 @@ public class Artwork {
 
     // Getters, Setters, Constructors
 
+
     public Long getId() {
         return id;
     }

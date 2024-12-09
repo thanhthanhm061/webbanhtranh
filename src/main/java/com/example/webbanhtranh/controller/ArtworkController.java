@@ -27,12 +27,12 @@ public class ArtworkController {
     }
 
 
-
     @GetMapping("/{id}")
     public String viewArtwork(@PathVariable Long id, Model model) {
         Artwork artwork = artworkService.getArtworkById(id);
         model.addAttribute("artwork", artwork);
         return "artwork-details";  // View for artwork details
     }
+
 
 }
