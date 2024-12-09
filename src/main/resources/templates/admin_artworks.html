@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Artwork Management</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Quản Lý Tác Phẩm Nghệ Thuật</h2>
+
+    <a href="/admin/artworks/add" class="btn btn-primary mb-4">Thêm Tác Phẩm Mới</a>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Ảnh</th>
+            <th>Tên Tác Phẩm</th>
+            <th>Giá</th>
+            <th>Mô Tả</th>
+            <th>Hành Động</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="artwork : ${artworks}">
+            <td><img th:src="@{${artwork.imageUrl}}" alt="Artwork Image" style="width: 100px;"></td>
+            <td th:text="${artwork.title}">Tên Tác Phẩm</td>
+            <td th:text="${artwork.price}">Giá</td>
+            <td th:text="${artwork.description}">Mô Tả</td>
+            <td>
+                <a th:href="@{/admin/artworks/edit/{id}(id=${artwork.id})}" class="btn btn-warning">Sửa</a>
+                <form th:action="@{/admin/artworks/delete/{id}(id=${artwork.id})}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">Xóa</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sửa Tác Phẩm</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Sửa Tác Phẩm</h2>
+
+    <form th:action="@{/admin/artworks/edit/{id}(id=${artwork.id})}" method="post">
+        <!-- Tên tác phẩm -->
+        <div class="form-group">
+            <label for="title">Tên Tác Phẩm</label>
+            <input type="text" id="title" name="title" class="form-control" th:value="${artwork.title}" required>
+        </div>
+
+        <!-- Giá tác phẩm -->
+        <div class="form-group">
+            <label for="price">Giá</label>
+            <input type="text" id="price" name="price" class="form-control" th:value="${artwork.price}" required>
+        </div>
+
+        <!-- URL ảnh tác phẩm -->
+        <div class="form-group">
+            <label for="imageUrl">URL Ảnh</label>
+            <input type="text" id="imageUrl" name="imageUrl" class="form-control" th:value="${artwork.imageUrl}" required>
+        </div>
+
+        <!-- Mô tả tác phẩm -->
+        <div class="form-group">
+            <label for="description">Mô Tả</label>
+            <textarea id="description" name="description" class="form-control" rows="4" th:text="${artwork.description}"></textarea>
+        </div>
+
+        <!-- Nút lưu và hủy -->
+        <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
+        <a href="/admin/artworks" class="btn btn-secondary">Hủy</a>
+    </form>
+</div>
+
+</body>
+</html>

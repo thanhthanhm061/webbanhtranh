@@ -27,7 +27,6 @@ public class CartItem {
         this.totalPrice = artwork.getPrice().multiply(BigDecimal.valueOf(quantity));  // Tính tổng giá trị
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -50,7 +49,6 @@ public class CartItem {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-        this.totalPrice = artwork.getPrice().multiply(BigDecimal.valueOf(quantity));  // Cập nhật tổng giá trị khi số lượng thay đổi
     }
 
     public BigDecimal getTotalPrice() {
