@@ -31,7 +31,7 @@ public class SpringSecurity {
                     .authorizeRequests() // Dùng authorizeRequests() để cấu hình bảo mật
                     .requestMatchers("/register/**").permitAll()
                     .requestMatchers("/artworks").permitAll()
-                    .requestMatchers("/admin_artworks").hasRole("ADMIN")
+                    .requestMatchers("/admin/artworks").hasRole("ADMIN")
                     .requestMatchers("/cart").authenticated()
                 .and()
                 .formLogin()
