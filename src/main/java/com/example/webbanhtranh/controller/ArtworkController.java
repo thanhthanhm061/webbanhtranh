@@ -26,7 +26,6 @@ public class ArtworkController {
         return "artworks";
     }
 
-
     @GetMapping("/{id}")
     public String viewArtwork(@PathVariable Long id, Model model) {
         Artwork artwork = artworkService.getArtworkById(id);
